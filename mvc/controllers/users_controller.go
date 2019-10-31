@@ -1,44 +1,39 @@
 package controllers
 
 import (
+	"log"
+	"github.com/gin-gonic/gin"
 	"golang-microservices/mvc/utils"
-	"encoding/json"
 	"golang-microservices/mvc/services"
 	"net/http"
 	"strconv"
 )
 
 // GetUser returns a user from the underlying service
-func GetUser(resp http.ResponseWriter, req *http.Request) {
+func GetUser(c *gin.Context) {
 
-	userID, err := (strconv.ParseInt(req.URL.Query().Get("user_id"), 10, 64))
+	userID, err := (strconv.ParseInt(c.Param("user_id"), 10, 64))
 
 	if err != nil {
+		log.Println(err)
 		apiErr := &utils.ApplicationError{
 			Message: "user_id_must be a number",
 			StatusCode: http.StatusBadRequest,
 			Code: "bad_request",
 		}
-		jsonValue, _ := json.Marshal(apiErr)
-		// Just return the Bad Request to the client
-		resp.WriteHeader(apiErr.StatusCode)
-		resp.Write(jsonValue)
+		utils.RespondError(c, apiErr)
 		return
 	}
 
-	user, apiErr := services.GetUser(userID)
+	user, apiErr := services.UsersService.GetUser(userID)
+	//item, itemErr := services.ItemsService.GetItem("none")
 
 	if apiErr != nil {
-		// handle error and return to the client
-		jsonValue, _ := json.Marshal(apiErr)
-		resp.WriteHeader(apiErr.StatusCode)
-		resp.Write([]byte(jsonValue))
+		utils.RespondError(c, apiErr)
 		return
 	}
 
 	// return user to client
-	jsonValue, _ := json.Marshal(user)
-
-	resp.Write(jsonValue)
+	utils.Respond(c, http.StatusOK, user)
 
 }

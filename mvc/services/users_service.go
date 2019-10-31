@@ -5,7 +5,14 @@ import (
 	"golang-microservices/mvc/domain"
 )
 
+type usersService struct {
+}
+
+var (
+	UsersService usersService
+)
+
 // GetUser returns a user from the database
-func GetUser(userID int64) (*domain.User, *utils.ApplicationError){
-	return domain.GetUser(userID)
+func (u *usersService) GetUser(userID int64) (*domain.User, *utils.ApplicationError){
+	return domain.UserDao.GetUser(userID)
 }

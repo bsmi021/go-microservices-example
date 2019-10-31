@@ -1,16 +1,26 @@
 package app
 
 import (
+	"github.com/gin-gonic/gin"
 	"log"
-	"golang-microservices/mvc/controllers"
-	"net/http"
 )
+
+var (
+	router *gin.Engine
+	
+)
+
+func init() {
+	router = gin.Default() // returns engine with logger and recovery middleware already attached
+	// router = gin.New() // returns a blank instance without middleware
+}
 
 // StartApp Starts the application which is handling web calls
 func StartApp() {
-	http.HandleFunc("/users", controllers.GetUser)
+	mapUrls()	
+	
 
-	if err := http.ListenAndServe("localhost:8080", nil); err != nil {
+	if err := router.Run("localhost:8080"); err != nil {
 		log.Fatalln(err)
 		panic(err)
 	}
