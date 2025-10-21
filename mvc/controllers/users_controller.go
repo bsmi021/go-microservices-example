@@ -3,8 +3,8 @@ package controllers
 import (
 	"log"
 	"github.com/gin-gonic/gin"
-	"golang-microservices/mvc/utils"
-	"golang-microservices/mvc/services"
+	"github.com/bsmi021/go-microservices-example/mvc/utils"
+	"github.com/bsmi021/go-microservices-example/mvc/services"
 	"net/http"
 	"strconv"
 )

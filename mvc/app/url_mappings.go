@@ -1,7 +1,7 @@
 package app
 
 import (
-	"golang-microservices/mvc/controllers"
+	"github.com/bsmi021/go-microservices-example/mvc/controllers"
 )
 
 // mapUrls defines all of the routes in the application

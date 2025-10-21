@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - GO_ENVIRONMENT=production
+      - LOG_LEVEL=info
+      - SECRET_GITHUB_ACCESS_TOKEN=${SECRET_GITHUB_ACCESS_TOKEN}
+    restart: unless-stopped
+    networks:
+      - microservices
+
+  mvc:
+    build:
+      context: .
+      dockerfile: Dockerfile.mvc
+    ports:
+      - "8081:8081"
+    environment:
+      - PORT=8081
+    restart: unless-stopped
+    networks:
+      - microservices
+
+  webserver:
+    build:
+      context: .
+      dockerfile: Dockerfile.webserver
+    ports:
+      - "8082:8082"
+    environment:
+      - PORT=8082
+    restart: unless-stopped
+    networks:
+      - microservices
+
+networks:
+  microservices:
+    driver: bridge

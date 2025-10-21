@@ -1,0 +1,56 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: '1.24'
+
+    - name: Run tests
+      run: go test -v ./...
+
+    - name: Build binaries
+      run: |
+        # API service
+        GOOS=linux GOARCH=amd64 go build -o dist/api-linux-amd64 ./src/api
+        GOOS=darwin GOARCH=amd64 go build -o dist/api-darwin-amd64 ./src/api
+        GOOS=darwin GOARCH=arm64 go build -o dist/api-darwin-arm64 ./src/api
+        GOOS=windows GOARCH=amd64 go build -o dist/api-windows-amd64.exe ./src/api
+
+        # MVC service
+        GOOS=linux GOARCH=amd64 go build -o dist/mvc-linux-amd64 ./mvc
+        GOOS=darwin GOARCH=amd64 go build -o dist/mvc-darwin-amd64 ./mvc
+        GOOS=darwin GOARCH=arm64 go build -o dist/mvc-darwin-arm64 ./mvc
+        GOOS=windows GOARCH=amd64 go build -o dist/mvc-windows-amd64.exe ./mvc
+
+        # Webserver
+        GOOS=linux GOARCH=amd64 go build -o dist/webserver-linux-amd64 ./introduction/webserver
+        GOOS=darwin GOARCH=amd64 go build -o dist/webserver-darwin-amd64 ./introduction/webserver
+        GOOS=darwin GOARCH=arm64 go build -o dist/webserver-darwin-arm64 ./introduction/webserver
+        GOOS=windows GOARCH=amd64 go build -o dist/webserver-windows-amd64.exe ./introduction/webserver
+
+    - name: Create Release
+      uses: softprops/action-gh-release@v2
+      with:
+        files: dist/*
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

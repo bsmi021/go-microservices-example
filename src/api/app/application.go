@@ -1,6 +1,9 @@
 package app
 
 import (
+	"log"
+	"os"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -12,10 +15,20 @@ func init() {
 	router = gin.Default()
 }
 
+// StartApp starts the API application
 func StartApp() {
 	mapUrls()
 
-	if err := router.Run("localhost:8080"); err != nil {
-		panic(err)
+	// Get port from environment variable, default to 8080
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	addr := ":" + port
+	log.Printf("Starting API server on %s", addr)
+
+	if err := router.Run(addr); err != nil {
+		log.Fatalf("Failed to start server: %v", err)
 	}
 }

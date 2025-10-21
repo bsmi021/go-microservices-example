@@ -2,7 +2,7 @@ package repositories
 
 import (
 	"strings"
-	"golang-microservices/src/api/utils/errors"
+	"github.com/bsmi021/go-microservices-example/src/api/utils/errors"
 )
 
 // CreateRepoRequest represents a request for what repository to create
