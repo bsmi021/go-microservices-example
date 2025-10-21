@@ -1,7 +1,7 @@
 package app
 
 import (
-	"golang-microservices/src/api/controllers/repositories"
+	"github.com/bsmi021/go-microservices-example/src/api/controllers/repositories"
 )
 
 func mapUrls() {

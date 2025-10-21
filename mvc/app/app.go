@@ -1,13 +1,14 @@
 package app
 
 import (
-	"github.com/gin-gonic/gin"
 	"log"
+	"os"
+
+	"github.com/gin-gonic/gin"
 )
 
 var (
 	router *gin.Engine
-	
 )
 
 func init() {
@@ -15,13 +16,20 @@ func init() {
 	// router = gin.New() // returns a blank instance without middleware
 }
 
-// StartApp Starts the application which is handling web calls
+// StartApp starts the MVC application which is handling web calls
 func StartApp() {
-	mapUrls()	
-	
+	mapUrls()
 
-	if err := router.Run("localhost:8080"); err != nil {
-		log.Fatalln(err)
-		panic(err)
+	// Get port from environment variable, default to 8081
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8081"
+	}
+
+	addr := ":" + port
+	log.Printf("Starting MVC server on %s", addr)
+
+	if err := router.Run(addr); err != nil {
+		log.Fatalf("Failed to start server: %v", err)
 	}
 }

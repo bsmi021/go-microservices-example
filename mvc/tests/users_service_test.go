@@ -1,9 +1,9 @@
 package tests
 
 import (
-	"golang-microservices/mvc/domain"
-	"golang-microservices/mvc/utils"
-	"golang-microservices/mvc/services"
+	"github.com/bsmi021/go-microservices-example/mvc/domain"
+	"github.com/bsmi021/go-microservices-example/mvc/utils"
+	"github.com/bsmi021/go-microservices-example/mvc/services"
 	"net/http"
 	"testing"
 	"github.com/stretchr/testify/assert"

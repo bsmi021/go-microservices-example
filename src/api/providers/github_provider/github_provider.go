@@ -4,10 +4,10 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"log"
-	"golang-microservices/src/api/clients/rest_client"
+	"github.com/bsmi021/go-microservices-example/src/api/clients/rest_client"
 	"net/http"
 	"fmt"
-	"golang-microservices/src/api/domain/github"
+	"github.com/bsmi021/go-microservices-example/src/api/domain/github"
 )
 
 const(

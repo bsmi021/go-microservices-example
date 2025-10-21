@@ -1,16 +1,16 @@
 package services
 
 import (
-	"golang-microservices/src/api/log/option_b"
+	"github.com/bsmi021/go-microservices-example/src/api/log/option_b"
 	"net/http"
 	"sync"
-	"golang-microservices/src/api/config"
-	"golang-microservices/src/api/providers/github_provider"
-	"golang-microservices/src/api/domain/github"
+	"github.com/bsmi021/go-microservices-example/src/api/config"
+	"github.com/bsmi021/go-microservices-example/src/api/providers/github_provider"
+	"github.com/bsmi021/go-microservices-example/src/api/domain/github"
 	"strings"
-	"golang-microservices/src/api/utils/errors"
+	"github.com/bsmi021/go-microservices-example/src/api/utils/errors"
 	
-	"golang-microservices/src/api/domain/repositories"
+	"github.com/bsmi021/go-microservices-example/src/api/domain/repositories"
 	
 )
 

@@ -1,6 +1,6 @@
 package main
 
-import "golang-microservices/mvc/app"
+import "github.com/bsmi021/go-microservices-example/mvc/app"
 
 func main()  {
 	app.StartApp()

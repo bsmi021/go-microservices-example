@@ -1,7 +1,7 @@
 package tests
 
 import (
-	"golang-microservices/mvc/utils"
+	"github.com/bsmi021/go-microservices-example/mvc/utils"
 	"sort"
 	"github.com/stretchr/testify/assert"
 	"testing"

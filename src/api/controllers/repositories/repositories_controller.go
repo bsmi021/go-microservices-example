@@ -3,9 +3,9 @@ package repositories
 // uses gin.gonic api
 
 import (
-	"golang-microservices/src/api/domain/repositories"
-	"golang-microservices/src/api/utils/errors"
-	"golang-microservices/src/api/services"
+	"github.com/bsmi021/go-microservices-example/src/api/domain/repositories"
+	"github.com/bsmi021/go-microservices-example/src/api/utils/errors"
+	"github.com/bsmi021/go-microservices-example/src/api/services"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )

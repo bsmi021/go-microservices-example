@@ -2,8 +2,8 @@ package services
 
 import (
 	"net/http"
-	"golang-microservices/mvc/domain"
-	"golang-microservices/mvc/utils"
+	"github.com/bsmi021/go-microservices-example/mvc/domain"
+	"github.com/bsmi021/go-microservices-example/mvc/utils"
 )
 
 type itemsService struct {

@@ -1,8 +1,8 @@
 package github_provider
 
 import (
-	"golang-microservices/src/api/domain/github"
-	"golang-microservices/src/api/clients/rest_client"
+	"github.com/bsmi021/go-microservices-example/src/api/domain/github"
+	"github.com/bsmi021/go-microservices-example/src/api/clients/rest_client"
 	"testing"
 	"github.com/stretchr/testify/assert"
 	"net/http"

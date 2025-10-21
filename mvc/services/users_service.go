@@ -1,8 +1,8 @@
 package services
 
 import (
-	"golang-microservices/mvc/utils"
-	"golang-microservices/mvc/domain"
+	"github.com/bsmi021/go-microservices-example/mvc/utils"
+	"github.com/bsmi021/go-microservices-example/mvc/domain"
 )
 
 type usersService struct {

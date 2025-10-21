@@ -1,7 +1,7 @@
 package main
 
 import (
-	"golang-microservices/src/api/app"
+	"github.com/bsmi021/go-microservices-example/src/api/app"
 )
 
 

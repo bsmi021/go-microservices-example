@@ -1,11 +1,11 @@
 package option_a
 
 import (
-	"golang-microservices/src/api/config"
+	"github.com/bsmi021/go-microservices-example/src/api/config"
 	"fmt"
 	"strings"
 	"os"
-	"github.com/Sirupsen/logrus"
+	"github.com/sirupsen/logrus"
 )
 
 var (
